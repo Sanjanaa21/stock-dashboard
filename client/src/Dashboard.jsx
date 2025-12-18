@@ -19,7 +19,7 @@ export default function Dashboard({ user }) {
   //   return () => socket.off("priceUpdate");
   // }, []);
   useEffect(() => {
-  const socket = io("https://stock-dashboard-4.onrender.com", {
+  const socket = io("https://stock-dashboard-5.onrender.com", {
     transports: ["websocket"],
     withCredentials: true,
   });
