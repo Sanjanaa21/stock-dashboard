@@ -9,7 +9,7 @@ export default function Dashboard({ user }) {
   const supported = ["GOOG", "TSLA", "AMZN", "META", "NVDA"];
 
   
-  useEffect(() => {
+  useEffect(() => {  
   const socket = io("https://stock-dashboard-backend-as1e.onrender.com", {
     transports: ["websocket"],
     withCredentials: true,
