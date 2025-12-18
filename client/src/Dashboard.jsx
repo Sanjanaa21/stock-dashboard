@@ -3,20 +3,39 @@ import API from "./api.js";
 import { io } from "socket.io-client";
 
 // const socket = io("http://localhost:5000");
-const socket =io("https://stock-dashboard-4.onrender.com");
+// const socket =io("https://stock-dashboard-4.onrender.com");
 export default function Dashboard({ user }) {
+
   const [stocks, setStocks] = useState([]);
   const supported = ["GOOG", "TSLA", "AMZN", "META", "NVDA"];
 
+  // useEffect(() => {
+  //   socket.emit("join", user.email);
+
+  //   socket.on("priceUpdate", (data) => {
+  //     setStocks(data);
+  //   });
+
+  //   return () => socket.off("priceUpdate");
+  // }, []);
   useEffect(() => {
-    socket.emit("join", user.email);
+  const socket = io("https://stock-dashboard-4.onrender.com", {
+    transports: ["websocket"],
+    withCredentials: true,
+  });
 
-    socket.on("priceUpdate", (data) => {
-      setStocks(data);
-    });
+  socket.emit("join", user.email);
 
-    return () => socket.off("priceUpdate");
-  }, []);
+  socket.on("priceUpdate", (data) => {
+    setStocks(data);
+  });
+
+  return () => {
+    socket.off("priceUpdate");
+    socket.disconnect();
+  };
+}, [user.email]);
+
 
   async function subscribe(ticker) {
     try {
