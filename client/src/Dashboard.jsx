@@ -10,7 +10,7 @@ export default function Dashboard({ user }) {
 
   
   useEffect(() => {
-  const socket = io("https://stock-dashboard-backend.onrender.com", {
+  const socket = io("https://stock-dashboard-backend-as1e.onrender.com", {
     transports: ["websocket"],
     withCredentials: true,
   });
