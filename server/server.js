@@ -360,16 +360,24 @@ app.get("/", (req, res) => {
 
 const server = http.createServer(app);
 
+// const io = new Server(server, {
+//   cors: {
+//     origin: [
+//       "http://localhost:5173",
+//       // "https://stock-dashboard-cjlh.vercel.app/"
+//       "https://stock-dashboard-4.onrender.com"
+//     ],
+//     methods: ["GET", "POST"]
+//   }
+// });
+
 const io = new Server(server, {
   cors: {
-    origin: [
-      "http://localhost:5173",
-      // "https://stock-dashboard-cjlh.vercel.app/"
-      "https://stock-dashboard-4.onrender.com"
-    ],
+    origin: "*",
     methods: ["GET", "POST"]
   }
 });
+
 
 // -------- REST APIs -------- //
 
