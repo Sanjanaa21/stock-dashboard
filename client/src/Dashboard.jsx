@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import API from "./api.js";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000");
-
+// const socket = io("http://localhost:5000");
+const socket =io("https://stock-dashboard-4.onrender.com");
 export default function Dashboard({ user }) {
   const [stocks, setStocks] = useState([]);
   const supported = ["GOOG", "TSLA", "AMZN", "META", "NVDA"];
